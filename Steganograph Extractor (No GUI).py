@@ -1,8 +1,8 @@
 from PIL import Image
 
-edit = Image.open("G:/Users/Jozhus/Documents/Python/Pictures/output.png").convert("RGBA")
+edit = Image.open("output.png").convert("RGBA")
 editimg = edit.load()
-base = Image.open("G:/Users/Jozhus/Documents/Python/Pictures/base.png").convert("RGBA")
+base = Image.open("base.png").convert("RGBA")
 baseimg = base.load()
 
 print("Extracted image size")
@@ -49,7 +49,7 @@ for y in range(height):
          outimg[x, y] = newdata.pop()
 
 
-output.save("G:/Users/Jozhus/Documents/Python/Pictures/Original.png")
+output.save("Original.png")
 
 print("Done")
 print("If the image has black bars, change the height")
