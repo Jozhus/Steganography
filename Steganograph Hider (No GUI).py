@@ -26,8 +26,8 @@ As long as the base image can fit all the injection bits, either pictures can be
 """
 
 
-base = Image.open("G:/Users/Jozhus/Documents/Python/Pictures/base.png").convert("RGBA")
-injection = Image.open("G:/Users/Jozhus/Documents/Python/Pictures/injection.png").convert("RGB")
+base = Image.open("base.png").convert("RGBA")
+injection = Image.open("injection.png").convert("RGB")
 baseimg = base.load()
 injimg = injection.load()
 
@@ -54,14 +54,14 @@ for y in range(injection.size[1]):
 injdata = injdata[::-1]
 
 #Dumps the binary equivalent of the injection image to a text file 
-index = open("G:/Users/Jozhus/Documents/Python/Pictures/Logs/(Delete me) injection_bin.txt", 'w')
+index = open("(Delete me) injection_bin.txt", 'w')
 index.write(''.join(injdata))
 index.close()
 
 print("Injecting")
 
 #Injects binary into base image
-index = open("G:/Users/Jozhus/Documents/Python/Pictures/Logs/(Delete me) edited_base_pixel_dump.txt", 'w')
+index = open("(Delete me) edited_base_pixel_dump.txt", 'w')
 for y in range(base.size[1]):
     for x in range(base.size[0]):
         if (len(injdata) > 0):
@@ -85,7 +85,7 @@ for y in range(base.size[1]):
 index.close()
 print("All bits injected")
 
-base.save("G:/Users/Jozhus/Documents/Python/Pictures/output.png")
+base.save("output.png")
 
 """
 Everything below does exactlty what the extractor does. Just here for ease of testing
@@ -94,7 +94,7 @@ Everything below does exactlty what the extractor does. Just here for ease of te
 print("Testing")
 
 editimg = baseimg
-base = Image.open("G:/Users/Jozhus/Documents/Python/Pictures/base.png").convert("RGBA")
+base = Image.open("base.png").convert("RGBA")
 baseimg = base.load()
 
 width = injection.size[0]
@@ -126,7 +126,7 @@ convdata = [int(''.join(extdata[x:x+8]), 2) for x in range(0, len(extdata), 8)]
 newdata = [tuple(convdata[x:x+len(outimg[0, 0])]) for x in range(0, len(convdata), len(outimg[0, 0]))][::-1]
                  
 #Dumps the color values of the extracted image to a text file
-index = open("G:/Users/Jozhus/Documents/Python/Pictures/Logs/(Delete me) output_pixel_dump.txt", 'w')
+index = open("(Delete me) output_pixel_dump.txt", 'w')
 for x in newdata:
     index.write(" " + str(x) + "\n")
 index.close()
@@ -135,7 +135,7 @@ for y in range(height):
     for x in range(width):
         outimg[x, y] = newdata.pop()
 
-output.save("G:/Users/Jozhus/Documents/Python/Pictures/(Delete me) If This Looks Like The Injection It Worked.png")
+output.save("(Delete me) If This Looks Like The Injection It Worked.png")
 
 print("Done")
 input()
